@@ -60,10 +60,10 @@ public class CallbackQueryProcessor {
                 builder.text(INPUT + "номер счёта/акта");
                 break;
             case "billDate":
-                builder.text(INPUT + "дату в формате 01.12.2023");
+                builder.text(INPUT + "дату в формате ДД.ММ.ГГГГ");
                 builder.replyMarkup(formReplyKeyboard(
                     getDatesFromInterval(LocalDate.now().minusDays(1),
-                        LocalDate.now().plusDays(3))));
+                        LocalDate.now().plusDays(4))));
                 break;
             case "customer":
                 builder.text(INPUT + "наименование организации покупателя");

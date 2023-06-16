@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -49,8 +50,9 @@ public class CreateBillCommand extends AbstractCommand {
     private String getBill(UserDetails userDetails) {
         RestTemplate restTemplate = new RestTemplate();
         Properties properties = new Properties();
+        ClassPathResource resource = new ClassPathResource("rest_service_url.properties");
         try {
-            properties.load(new FileInputStream("src/main/resources/rest_service_url.properties"));
+            properties.load(resource.getInputStream());
         } catch (IOException e) {
             throw new RuntimeException("Properties file with URL not found");
         }

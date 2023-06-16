@@ -13,7 +13,7 @@
   <url>http://www.example.com</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
@@ -56,8 +56,11 @@
       <artifactId>jackson-datatype-jsr310</artifactId>
       <version>2.15.2</version>
     </dependency>
-
-
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-reload4j</artifactId>
+      <version>2.0.7</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -84,6 +87,13 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>com.boldyrev.billmakertelegrambot.BotStart</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -101,6 +111,22 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>com.boldyrev.billmakertelegrambot.BotStart</mainClass>
+              </manifest>
+              <manifestEntries>
+                <Class-Path>.</Class-Path> <!-- HERE IS THE IMPORTANT BIT -->
+              </manifestEntries>
+            </archive>
+            <descriptorRefs>
+              <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>

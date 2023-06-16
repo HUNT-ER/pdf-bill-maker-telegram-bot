@@ -70,7 +70,7 @@ public class BillMakerBot extends TelegramLongPollingCommandBot {
             Collectors.toMap(command -> "/" + command.getCommandIdentifier(),
                 IBotCommand::getDescription));
         StringBuilder builder = new StringBuilder();
-        builder.append("Список доступных комманд:\n");
+        builder.append("Список доступных команд:\n");
         registeredCommands.forEach(
             (k, v) -> builder.append(k).append(" - ").append(v).append("\n"));
         sendMessage(update.getMessage().getChatId(), builder.toString());
