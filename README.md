@@ -1,6 +1,13 @@
 # Telegram Bot for PDF Bill Maker API
 This bot allows to use Bill Maker API for creating pdf bills. Bot works on Telegram Bot API in long polling mode.
 
+# Build with
+- Java
+- Telegram Bot API
+- Long polling
+- Lombok
+- Docker
+
 ## Set up 
 - [*clone*](https://github.com/HUNT-ER/pdf-bill-maker-telegram-bot.git) the project
 - in environmetal param specify bot token and name
